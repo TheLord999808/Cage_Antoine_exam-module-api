@@ -52,9 +52,10 @@ class TaxeFonciere
     #[Groups([ 'taxe_fonciere:read'])]
     public float $result;
 
-    public function process(): void
+    public function process(): float
     {
         $valcad = $this->surface * $this ->prixm²;
-        $this->result = $valcad*0.005;       
+        $this->result = $valcad*0.005; 
+        return $this->result;      
     }
 }

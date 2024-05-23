@@ -44,8 +44,9 @@ class TaxeOrdures
     #[Groups([ 'taxe_ordures:read'])]
     public float $result;
 
-    public function process(): void
+    public function process(): float
     {
         $this->result = ($this->valloccad/2)*0.0937;       
+        return $this->result;
     }
 }
