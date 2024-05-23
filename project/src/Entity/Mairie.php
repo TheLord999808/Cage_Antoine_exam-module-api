@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MairieRepository::class)]
-#[ApiFilter(SearchFilter::class, properties: ['codePostal' => 'exact', 'ville' => 'exact', 'departement.region'])]
+#[ApiFilter(SearchFilter::class, properties: ['codePostal' => 'partial', 'ville' => 'partial', 'departement.region' => 'partial', 'departement.label' => 'partial'])]
 #[ApiFilter(OrderFilter::class, properties: ['label', 'codePostal'], arguments: ['orderParameterName' => 'order'])]
 //#[ApiResource(order: ['label','codePostal'])]
 #[ApiResource(
@@ -80,11 +80,11 @@ class Mairie
     private ?string $email = null;
 
     #[ORM\Column(length: 20,nullable: true)]
-    #[Groups(['mairie:read','mairie:post'])]
+    #[Groups(['mairie:read','mairie:read:collection','mairie:post'])]
     private ?string $latitude = null;
 
     #[ORM\Column(length: 20,nullable: true)]
-    #[Groups(['mairie:read','mairie:post'])]
+    #[Groups(['mairie:read','mairie:read:collection','mairie:post'])]
     private ?string $longitude = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]

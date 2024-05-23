@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: DepartementRepository::class)]
-#[ApiFilter(SearchFilter::class, properties: ['numero' => 'exact', 'label' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['numero' => 'partial', 'label' => 'partial'])]
 #[ApiFilter(OrderFilter::class, properties: ['label', 'region'], arguments: ['orderParameterName' => 'order'])]
 //#[ApiResource(order: ['label','codePostal'])]
 #[ApiResource(
